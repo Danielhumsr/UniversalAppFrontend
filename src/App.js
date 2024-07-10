@@ -1,16 +1,24 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginVista from './components/LogIn/LoginVista';
-import ListaUsuarios from './components/LogIn/ListarUsuariosVista';
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<LoginVista></LoginVista>}></Route>
-        <Route path='/ListaUsuarios' element={<ListaUsuarios></ListaUsuarios>}></Route>
-      </Routes>
-    </BrowserRouter>
-
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 
