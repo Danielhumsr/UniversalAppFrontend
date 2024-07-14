@@ -15,27 +15,27 @@ function LogInpage() {
         singIn(values);
     })
     return (
-        <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-            <div className="bg-slate-800 max-w-md p-10 rounded-md">
-                <h1 className="text-center text-2xl font-bold">LogIn</h1>
+        <div className="">
+            <div className="">
+                <h1 className="">LogIn</h1>
                 {
                     regErrors.map((error, i)=>(
-                        <div className="bg-red-500 p-2 text-white rounded-md my-2">{error}</div>
+                        <div className="">{error}</div>
                     ))
                 }
                 <form onSubmit={onSubmit}>
                     <input type="Text" {...register("username", { required: true })}
-                        className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+                        className=""
                         placeholder="User Name" />
-                    {errors.username && (<p className=" text-red-500"> Error en User name</p>)}
+                    {errors.username && (<p className=""> Error en User name</p>)}
                     <input type="password" {...register("password", { required: true })}
-                        className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+                        className=""
                         placeholder="Password" />
-                    {errors.password && (<p className=" text-red-500"> Error en Password</p>)}
+                    {errors.password && (<p className=""> Error en Password</p>)}
                     <button type="submit">
                         LogIn
                     </button>
-                    <p className="flex gap-x-2 justify-between">No tienes cuenta? <Link className="text-sky-500" to={"/SingUp"}>Registrate</Link> </p>
+                    <p className="">No tienes cuenta? <Link className="" to={"/SingUp"}>Registrate</Link> </p>
                 </form>
             </div>
         </div>
