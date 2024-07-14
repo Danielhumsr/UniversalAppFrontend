@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useEffect } from 'react'
-import { pruebaRequiest, lopInRequiest } from "../Utils/ApiUtils";
+import { pruebaRequiest, lopInRequiest, validatetoken } from "../Utils/ApiUtils";
+import Cookies from 'js-cookie';
 export const logContext = createContext();
 
 export const useLog = () => {
@@ -18,27 +19,52 @@ export const LogProvaider = ({ children }) => {
     const singUp = async (user) => {
         try {
             const res = await pruebaRequiest(user);
-            setUser(res.data);
+            console.log(res)
+            setUser(res.data.ObjetoRespuiesta.username);
+            console.log(res.data.ObjetoRespuiesta.username);
             setIsAutenticate(true);
         }catch(error){
-            console.log(error.response.data)
-            setErrors(error.response.data.error)
+            console.log(error)
+            setErrors(["Registro Invalido"])
         }
 
     }
 
     const singIn = async (user) => {
+        
         try {
             const res = await lopInRequiest(user);
-            setUser(res.data);
-            console.log(res.data);
+            setUser(res.data.objetoRespuiesta.username);
+            console.log(res.data.objetoRespuiesta.username);
+            const token = res.data.respuesta;
+            Cookies.set('token', token, { expires: 7, secure: true });
             setIsAutenticate(true);
 
         }catch(error){
-            console.log(error.response.data)
-            setErrors(error.response.data.error)
+            console.log(error)
+            setErrors(["Inicio de sesion Invalido"])
+            setIsAutenticate(false);
+            setUser(null);
         }
 
+    }
+
+    const tokenValidation = async () => {
+        const tokenV = Cookies.get('token');
+            if(!tokenV){
+                setIsAutenticate(false);
+                setUser(null);
+                return;
+            }
+            try {
+            const res = await validatetoken(user, tokenV);
+            setUser(res.data.objetoRespuiesta.username);
+            setIsAutenticate(true);
+            } catch (error) {  
+                console.log(error)
+                setIsAutenticate(false);
+                setUser(null);
+            }
     }
 
     useEffect(()=>{
@@ -51,6 +77,7 @@ export const LogProvaider = ({ children }) => {
         <logContext.Provider value={{
             singUp,
             singIn,
+            tokenValidation,
             user,
             isAutenticate,
             errors
