@@ -4,7 +4,6 @@ import { Navigate, Outlet } from "react-router-dom";
 
 function SesionValidation() {
 const {isAutenticate, tokenValidation }= useLog();
-console.log(isAutenticate);
 
 useEffect(()=>{
   tokenValidation();

@@ -8,8 +8,9 @@ function LogInpage() {
     const {singIn, isAutenticate, errors: regErrors }= useLog();
     const navigate = useNavigate();
     useEffect(()=>{
-        if(isAutenticate) navigate('/ListUser');
+        if(isAutenticate) navigate('/ModuleMenu');
     }, [isAutenticate])
+
     const onSubmit = handleSubmit(async (values) => {
         singIn(values);
     })
