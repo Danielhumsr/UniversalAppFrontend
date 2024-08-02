@@ -1,19 +1,31 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import NavBarComponent from "../Componemts/NavBarComponent"
 
 function HomePage() {
   return (
     <div>
-         <div className="">
-            <div className="">
-                <h1 className="">Home Page</h1>
-                <p className="" >Universal APP</p>
-                <p className=''>Aplicacion que contiene retos y apredizajes de <br/> Daniel Salazar</p>
-                <p className='' >As <Link className="" to={"/LogIn"}>Log In</Link> para porder ver todas las funciones </p>
-                <p className=''>o <Link className="" to={"/LogIn"}>Registrate</Link> para empesar a conocer</p>
+      <NavBarComponent />
+      <div style={{ height: "50vh" }}>
+        <div className=' d-flex justify-content-center align-items-center h-100'>
+          <div className="row">
+            <div className="col">
+              <div className="card text-center " data-bs-theme="dark"  style={{ width: "45vh" }}>
+                <div className="card-header">
+                  Bienvenido
+                </div>
+                <div className="card-body">
+                  <h5 className="card-title">Universal App</h5>
+                  <p className="card-text">Aplicacion que se desertan y apredizajes de <strong>Daniel Salazar</strong>.</p>
+                  <a href="/LogIn" className="btn btn-success">Log In</a>
+                  <span> Si no tienes cuenta </span>
+                  <a href="/SingUp" className="btn btn-primary">Sing Up</a>
+                </div>
+              </div>
             </div>
-         </div>
-
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
