@@ -7,9 +7,9 @@ const apiURLProtecte = "/module/user"
 
  export const lopInRequiest = user => axios.post(`${apiURL}/logIn`, user)
 
- export const validatetoken = (user, token) =>  {
+ export const validatetoken = (token) =>  {
     const data = {
-        "username": user
+       
     }
      const res = axios.post(`/module/user/ValidateToken`, data,{headers:{'Authorization': "Bearer "+token}})
      return res

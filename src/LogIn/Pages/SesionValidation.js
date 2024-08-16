@@ -3,10 +3,19 @@ import { useLog } from "../Utils/LoginContext";
 import { Navigate, Outlet } from "react-router-dom";
 
 function SesionValidation() {
-const {isAutenticate, tokenValidation }= useLog();
+const {isAutenticate, tokenValidation, user }= useLog();
 
 useEffect(()=>{
-  tokenValidation();
+  if(!user){
+    tokenValidation();
+    console.log(user)
+  console.log(isAutenticate)
+  }else{
+    console.log(user)
+    console.log(isAutenticate)
+  }
+  
+  
 }, [])
 
 //310 https://www.youtube.com/watch?v=NmkY4JgS21A&t=8124s

@@ -19,12 +19,10 @@ export const LogProvaider = ({ children }) => {
     const singUp = async (user) => {
         try {
             const res = await pruebaRequiest(user);
-            console.log(res)
             setUser(res.data.ObjetoRespuiesta.username);
-            console.log(res.data.ObjetoRespuiesta.username);
             setIsAutenticate(true);
         }catch(error){
-            console.log(error)
+            console.error(error)
             setErrors(["Registro Invalido"])
         }
 
@@ -35,13 +33,12 @@ export const LogProvaider = ({ children }) => {
         try {
             const res = await lopInRequiest(user);
             setUser(res.data.objetoRespuiesta.username);
-            console.log(res.data.objetoRespuiesta.username);
             const token = res.data.respuesta;
             Cookies.set('token', token, { expires: 7, secure: true });
             setIsAutenticate(true);
 
         }catch(error){
-            console.log(error)
+            console.error(error)
             setErrors(["Inicio de sesion Invalido"])
             setIsAutenticate(false);
             setUser(null);
@@ -57,11 +54,11 @@ export const LogProvaider = ({ children }) => {
                 return;
             }
             try {
-            const res = await validatetoken(user, tokenV);
+            const res = await validatetoken(tokenV);
             setUser(res.data.objetoRespuiesta.username);
             setIsAutenticate(true);
             } catch (error) {  
-                console.log(error)
+                console.error(error)
                 setIsAutenticate(false);
                 setUser(null);
             }
