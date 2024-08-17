@@ -16,10 +16,13 @@ export const LogProvaider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [isAutenticate, setIsAutenticate] = useState(false)
     const[errors, setErrors] = useState([])
+
+
     const singUp = async (user) => {
         try {
             const res = await pruebaRequiest(user);
-            setUser(res.data.ObjetoRespuiesta.username);
+            console.log(res.data.objetoRespuesta.username)
+            setUser(res.data.objetoRespuesta.username);
             setIsAutenticate(true);
         }catch(error){
             console.error(error)
@@ -32,7 +35,7 @@ export const LogProvaider = ({ children }) => {
         
         try {
             const res = await lopInRequiest(user);
-            setUser(res.data.objetoRespuiesta.username);
+            setUser(res.data.objetoRespuesta.username);
             const token = res.data.respuesta;
             Cookies.set('token', token, { expires: 7, secure: true });
             setIsAutenticate(true);
@@ -55,7 +58,7 @@ export const LogProvaider = ({ children }) => {
             }
             try {
             const res = await validatetoken(tokenV);
-            setUser(res.data.objetoRespuiesta.username);
+            setUser(res.data.objetoRespuesta.username);
             setIsAutenticate(true);
             } catch (error) {  
                 console.error(error)
