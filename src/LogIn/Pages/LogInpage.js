@@ -8,12 +8,19 @@ function LogInpage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { singIn, isAutenticate, errors: regErrors } = useLog();
     const navigate = useNavigate();
-    useEffect(()=>{
+    /*useEffect(()=>{
         if(isAutenticate) navigate('/ModuleMenu');
-    }, [isAutenticate])
+    }, [isAutenticate])*/
 
     const onSubmit = handleSubmit(async (values) => {
-        singIn(values);
+        let singInV = singIn(values)
+        console.log(singInV)
+        singInV.then(function (resultado){
+            if(resultado){
+                console.log(resultado)
+                navigate('/ModuleMenu')
+            }
+        })
     })
     return (
         <div>

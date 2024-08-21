@@ -31,7 +31,7 @@ function ModulesMenu() {
 
                             </div>
                             <div className="card-footer">
-                                <a href="/SingUp" className="btn btn-primary">Ingresar</a>
+                                <a href="/GestionUsuarios" className="btn btn-primary">Ingresar</a>
                             </div>
                         </div>
                     </div>

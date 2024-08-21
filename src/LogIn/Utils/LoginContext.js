@@ -24,6 +24,7 @@ export const LogProvaider = ({ children }) => {
             console.log(res.data.objetoRespuesta.username)
             setUser(res.data.objetoRespuesta.username);
             setIsAutenticate(true);
+           
         }catch(error){
             console.error(error)
             setErrors(["Registro Invalido"])
@@ -39,12 +40,14 @@ export const LogProvaider = ({ children }) => {
             const token = res.data.respuesta;
             Cookies.set('token', token, { expires: 7, secure: true });
             setIsAutenticate(true);
+            return true
 
         }catch(error){
             console.error(error)
             setErrors(["Inicio de sesion Invalido"])
             setIsAutenticate(false);
             setUser(null);
+            return false
         }
 
     }
@@ -54,16 +57,18 @@ export const LogProvaider = ({ children }) => {
             if(!tokenV){
                 setIsAutenticate(false);
                 setUser(null);
-                return;
+                return false;
             }
             try {
             const res = await validatetoken(tokenV);
             setUser(res.data.objetoRespuesta.username);
             setIsAutenticate(true);
+            return true;
             } catch (error) {  
                 console.error(error)
                 setIsAutenticate(false);
                 setUser(null);
+                return false;
             }
     }
 

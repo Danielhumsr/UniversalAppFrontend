@@ -50,9 +50,9 @@ function RegisterPage() {
                                             {errors.password && (<p style={{ color: "red" }}> Constraseña requerido</p>)}
                                         </div>
                                         <div className="mb-3">
-                                            <input type="Text" {...register("rol", { required: true })}
+                                            <input type="Text" {...register("Email", { required: true })}
                                                 className="form-control"
-                                                placeholder="Rol" />
+                                                placeholder="Email" />
                                             {errors.rol && (<p style={{ color: "red" }}> Rol requerido</p>)}
                                         </div>
                                         <button type="submit" className="btn btn-primary mb-3">
