@@ -33,7 +33,7 @@ function RegisterPage() {
                                     <h5 className="card-title">Registrate</h5>
                                     {
                                         regErrors.map((error, i) => (
-                                            <div className="">{error}</div>
+                                            <div className="text-danger">{error}</div>
                                         ))
                                     }
                                     <form onSubmit={onSubmit}>
@@ -50,7 +50,7 @@ function RegisterPage() {
                                             {errors.password && (<p style={{ color: "red" }}> Constraseña requerido</p>)}
                                         </div>
                                         <div className="mb-3">
-                                            <input type="Text" {...register("Email", { required: true })}
+                                            <input type="Text" {...register("email", { required: true })}
                                                 className="form-control"
                                                 placeholder="Email" />
                                             {errors.rol && (<p style={{ color: "red" }}> Rol requerido</p>)}

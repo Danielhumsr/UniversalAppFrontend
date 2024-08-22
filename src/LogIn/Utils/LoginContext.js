@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from 'react'
-import { pruebaRequiest, lopInRequiest, validatetoken } from "../Utils/ApiUtils";
+import { pruebaRequiest, lopInRequiest, validatetoken } from "./LoginApiUtils";
 import Cookies from 'js-cookie';
 export const logContext = createContext();
 
@@ -43,8 +43,9 @@ export const LogProvaider = ({ children }) => {
             return true
 
         }catch(error){
-            console.error(error)
-            setErrors(["Inicio de sesion Invalido"])
+            //console.error(error)
+            console.error(error.response.data.respuesta)
+            setErrors([error.response.data.respuesta])
             setIsAutenticate(false);
             setUser(null);
             return false

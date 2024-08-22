@@ -8,9 +8,6 @@ function LogInpage() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { singIn, isAutenticate, errors: regErrors } = useLog();
     const navigate = useNavigate();
-    /*useEffect(()=>{
-        if(isAutenticate) navigate('/ModuleMenu');
-    }, [isAutenticate])*/
 
     const onSubmit = handleSubmit(async (values) => {
         let singInV = singIn(values)
@@ -37,7 +34,7 @@ function LogInpage() {
                                     <h5 className="card-title">Log In</h5>
                                     {
                                         regErrors.map((error, i) => (
-                                            <div className="">{error}</div>
+                                            <div className="text-danger" key={i}>{error}</div>
                                         ))
                                     }
                                     <form onSubmit={onSubmit}>
